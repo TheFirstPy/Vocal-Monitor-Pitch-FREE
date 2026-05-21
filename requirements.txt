@@ -1,6 +1,20 @@
-numpy
-soundfile
-sounddevice
-aubio
-pyqtgraph
-PyQt6
+# Core dependencies
+numpy>=1.20.0
+soundfile>=0.10.0
+sounddevice>=0.4.0
+aubio>=0.4.9
+pyqtgraph>=0.13.0
+PyQt6>=6.4.0
+pydub>=0.25.0
+
+# Optional: GPU-accelerated source separation
+# Uncomment for Demucs support (vocal/instrumental splitting)
+# torch>=2.0.0
+# torchaudio>=2.0.0
+# demucs>=4.0.0
+
+# Optional: Pitch shifting effects
+# librosa>=0.10.0
+
+# Optional: Rust-based pitch smoothing (if vpm_core is available)
+# vpm_core  # Requires Rust compilation
