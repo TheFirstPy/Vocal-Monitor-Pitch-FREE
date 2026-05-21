@@ -181,11 +181,6 @@ export VPM_CACHE_DIR=~/.vpm_cache  # по умолчанию ~/.vpm_cache
 | `mdx_extra_q` | Отличное | ~4 GB | Средне |
 | `mdx_extra` | Высокое | ~6 GB | Медленно |
 
----
-
-## 📸 Скриншоты
-
-*(Добавьте скриншоты интерфейса в папку `screenshots/`)*
 
 ---
 
@@ -217,8 +212,7 @@ MIT License — см. файл [LICENSE](LICENSE)
 ## 📬 Контакты
 
 - **Автор**: ZaVoZ
-- **Email**: *(укажите при необходимости)*
-- **Issues**: [GitHub Issues](https://github.com/ZaVoZ/Vocal-Monitor-Pitch-FREE/issues)
+- **Issues**: [GitHub Issues](https://github.com/TheFirstPy/Vocal-Monitor-Pitch-FREE/issues)
 
 ---
 
