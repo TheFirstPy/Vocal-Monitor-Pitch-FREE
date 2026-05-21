@@ -256,8 +256,7 @@ MIT License — см. файл [LICENSE](LICENSE)
 ## 📬 Контакты
 
 - **Автор**: ZaVoZ
-- **Email**: *(укажите при необходимости)*
-- **Issues**: [GitHub Issues](https://github.com/ZaVoZ/Vocal-Monitor-Pitch-FREE/issues)
+- **Issues**: [GitHub Issues](https://github.com/TheFirstPy/Vocal-Monitor-Pitch-FREE/issues)
 
 ---
 
