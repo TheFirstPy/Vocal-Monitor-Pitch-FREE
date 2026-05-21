@@ -144,6 +144,8 @@ C_GREEN = "#66bb6a"
 C_YELLOW = "#ffa726"
 C_RED = "#ef5350"
 C_ACCENT = "#b39ddb"
+
+# Dark Theme (default)
 BG = "#0d0d14"
 SURFACE = "#161620"
 SURFACE2 = "#1e1e2c"
@@ -153,77 +155,100 @@ TEXT = "#dcdcf0"
 TEXT_DIM = "#525278"
 TEXT_MID = "#9090b8"
 
-SS = f"""
-QMainWindow, QDialog  {{ background-color: {BG}; }}
+# Light Theme
+LIGHT_BG = "#f5f5f5"
+LIGHT_SURFACE = "#ffffff"
+LIGHT_SURFACE2 = "#e8e8e8"
+LIGHT_SURFACE3 = "#d0d0d0"
+LIGHT_BORDER = "#c0c0c0"
+LIGHT_TEXT = "#1a1a1a"
+LIGHT_TEXT_DIM = "#666666"
+LIGHT_TEXT_MID = "#444444"
+
+CURRENT_THEME = "dark"  # "dark" or "light"
+
+def get_stylesheet(theme="dark"):
+    """Возвращает stylesheet для выбранной темы"""
+    if theme == "light":
+        bg, surface, surface2, surface3, border = LIGHT_BG, LIGHT_SURFACE, LIGHT_SURFACE2, LIGHT_SURFACE3, LIGHT_BORDER
+        text, text_dim, text_mid = LIGHT_TEXT, LIGHT_TEXT_DIM, LIGHT_TEXT_MID
+    else:
+        bg, surface, surface2, surface3, border = BG, SURFACE, SURFACE2, SURFACE3, BORDER
+        text, text_dim, text_mid = TEXT, TEXT_DIM, TEXT_MID
+    
+    return f"""
+QMainWindow, QDialog  {{ background-color: {bg}; }}
 QWidget {{
-    color: {TEXT};
+    color: {text};
     font-family: 'JetBrains Mono','Fira Code','Consolas',monospace;
     font-size: 12px;
 }}
 QLabel {{ font-weight: 500; }}
 QToolTip {{
-    background: {SURFACE2}; color: {TEXT}; border: 1px solid {BORDER};
+    background: {surface2}; color: {text}; border: 1px solid {border};
     border-radius: 4px; padding: 4px 8px; font-size: 11px;
 }}
 QPushButton {{
-    background: {SURFACE2}; border: 1px solid {BORDER};
+    background: {surface2}; border: 1px solid {border};
     border-radius: 7px; padding: 6px 14px;
-    font-weight: 600; color: {TEXT}; min-height: 32px;
+    font-weight: 600; color: {text}; min-height: 32px;
 }}
-QPushButton:hover   {{ background: {SURFACE3}; border-color: {C_SONG}; color:#fff; }}
+QPushButton:hover   {{ background: {surface3}; border-color: {C_SONG}; color:#fff; }}
 QPushButton:pressed {{ background: #2a3a4a; }}
-QPushButton:disabled {{ background: {SURFACE}; color: {TEXT_DIM}; border-color:{BORDER}; }}
+QPushButton:disabled {{ background: {surface}; color: {text_dim}; border-color:{border}; }}
 QPushButton[active="true"] {{
     background: #1a2e1a; border-color: {C_GREEN}; color: {C_GREEN};
 }}
 QSlider::groove:horizontal {{
-    height:4px; background:{SURFACE3}; border-radius:2px;
+    height:4px; background:{surface3}; border-radius:2px;
 }}
 QSlider::sub-page:horizontal {{
     background: qlineargradient(x1:0,y1:0,x2:1,y2:0, stop:0 {C_SONG}, stop:1 #7be0ff);
     border-radius:2px;
 }}
 QSlider::handle:horizontal {{
-    background:{TEXT}; width:12px; height:12px; margin:-4px 0;
+    background:{text}; width:12px; height:12px; margin:-4px 0;
     border-radius:6px; border:2px solid {C_SONG};
 }}
 QSlider::handle:horizontal:hover {{ background:white; }}
-QCheckBox {{ spacing:7px; color:{TEXT_MID}; }}
+QCheckBox {{ spacing:7px; color:{text_mid}; }}
 QCheckBox::indicator {{
     width:15px; height:15px;
-    border:1.5px solid {BORDER}; border-radius:4px; background:{SURFACE2};
+    border:1.5px solid {border}; border-radius:4px; background:{surface2};
 }}
 QCheckBox::indicator:checked {{ background:{C_SONG}; border-color:{C_SONG}; }}
 QProgressDialog {{
-    background:{SURFACE}; border:1px solid {BORDER}; border-radius:10px;
+    background:{surface}; border:1px solid {border}; border-radius:10px;
 }}
 QDoubleSpinBox, QSpinBox, QComboBox, QLineEdit {{
-    background:{SURFACE2}; border:1px solid {BORDER}; border-radius:5px;
-    padding:3px 7px; color:{TEXT};
+    background:{surface2}; border:1px solid {border}; border-radius:5px;
+    padding:3px 7px; color:{text};
 }}
 QComboBox QAbstractItemView {{
-    background:{SURFACE2}; color:{TEXT};
-    selection-background-color:{SURFACE3};
+    background:{surface2}; color:{text};
+    selection-background-color:{surface3};
 }}
 QDialogButtonBox QPushButton {{ min-width:80px; }}
 QTableWidget {{
-    background: {SURFACE2}; color: {TEXT}; gridline-color: {BORDER};
-    border: 1px solid {BORDER}; border-radius: 6px;
+    background: {surface2}; color: {text}; gridline-color: {border};
+    border: 1px solid {border}; border-radius: 6px;
 }}
-QTableWidget::item:selected {{ background: {SURFACE3}; }}
+QTableWidget::item:selected {{ background: {surface3}; }}
 QHeaderView::section {{
-    background: {SURFACE}; color: {TEXT_MID}; border: none; padding: 4px; font-weight: bold;
+    background: {surface}; color: {text_mid}; border: none; padding: 4px; font-weight: bold;
 }}
 QListWidget {{
-    background: {SURFACE2}; border: 1px solid {BORDER}; border-radius: 6px; padding: 5px;
+    background: {surface2}; border: 1px solid {border}; border-radius: 6px; padding: 5px;
 }}
 QListWidget::item {{
-    padding: 6px; border-radius: 4px; color: {TEXT_MID};
+    padding: 6px; border-radius: 4px; color: {text_mid};
 }}
 QListWidget::item:selected {{
-    background: {SURFACE3}; color: {C_SONG}; font-weight: bold;
+    background: {surface3}; color: {C_SONG}; font-weight: bold;
 }}
 """
+
+SS = get_stylesheet("dark")
 
 # ─── Cache Manager ────────────────────────────────────────────────────────────
 CACHE_DIR = os.path.join(os.path.expanduser("~"), ".vpm_cache")
@@ -966,6 +991,12 @@ class VocalPitchMonitor(QMainWindow):
         super().__init__()
         self.setWindowTitle("🎤  Vocal Pitch Monitor  v2.7")
         self.setMinimumSize(980, 880)
+        
+        # Set window icon
+        icon_path = os.path.join(os.path.dirname(__file__), "assets", "logo.ico")
+        if os.path.exists(icon_path):
+            from PyQt6.QtGui import QIcon
+            self.setWindowIcon(QIcon(icon_path))
 
         # ── audio state ──────────────────────────────────────────────────────
         self.stats = DebugStats()
@@ -1458,6 +1489,29 @@ class VocalPitchMonitor(QMainWindow):
         sh.setOffset(0, 0)
         lbl.setGraphicsEffect(sh)
         footer.addWidget(lbl)
+        
+        # Theme toggle button (small, out of the way)
+        self.btn_theme = QPushButton("🌙")
+        self.btn_theme.setFixedSize(28, 28)
+        self.btn_theme.setToolTip("Toggle light/dark theme")
+        self.btn_theme.setStyleSheet("""
+            QPushButton {
+                background: transparent;
+                border: 1px solid #2e2e46;
+                border-radius: 14px;
+                font-size: 14px;
+                padding: 0px;
+                min-height: 28px;
+                max-width: 28px;
+            }
+            QPushButton:hover {
+                background: #262636;
+                border-color: #4fc3f7;
+            }
+        """)
+        self.btn_theme.clicked.connect(self.toggle_theme)
+        footer.addWidget(self.btn_theme)
+        
         vbox.addLayout(footer)
         self.setCentralWidget(root)
 
@@ -2762,6 +2816,51 @@ class VocalPitchMonitor(QMainWindow):
     # ─────────────────────────────────────────────────────────────────────────
     # Graph helpers
     # ─────────────────────────────────────────────────────────────────────────
+    def toggle_theme(self):
+        """Переключение между светлой и тёмной темой"""
+        global CURRENT_THEME, SS
+        CURRENT_THEME = "light" if CURRENT_THEME == "dark" else "dark"
+        SS = get_stylesheet(CURRENT_THEME)
+        self.setStyleSheet(SS)
+        self.btn_theme.setText("☀️" if CURRENT_THEME == "light" else "🌙")
+        
+        # Update plot background
+        bg_color = LIGHT_BG if CURRENT_THEME == "light" else BG
+        self.plot.setBackground(bg_color)
+        
+        # Update note cards
+        surface = LIGHT_SURFACE if CURRENT_THEME == "light" else SURFACE
+        border = LIGHT_BORDER if CURRENT_THEME == "light" else BORDER
+        for card in (self.song_card, self.user_card):
+            card.setStyleSheet(
+                f"QFrame#noteCard {{background:{surface}; border:1.5px solid {border};"
+                f" border-radius:12px;}}")
+        
+        # Update lyrics panel
+        self.lyrics_panel.setStyleSheet(
+            f"QFrame {{ background: {surface}; border: 1.5px solid {border};"
+            " border-radius: 10px; margin-bottom: 2px; }"
+        )
+        
+        # Update theme button style
+        border_color = LIGHT_BORDER if CURRENT_THEME == "light" else BORDER
+        hover_bg = LIGHT_SURFACE3 if CURRENT_THEME == "light" else SURFACE3
+        self.btn_theme.setStyleSheet(f"""
+            QPushButton {{
+                background: transparent;
+                border: 1px solid {border_color};
+                border-radius: 14px;
+                font-size: 14px;
+                padding: 0px;
+                min-height: 28px;
+                max-width: 28px;
+            }}
+            QPushButton:hover {{
+                background: {hover_bg};
+                border-color: #4fc3f7;
+            }}
+        """)
+
     def clear_graph(self):
         self.plot_song.fill(np.nan)
         self.plot_user.fill(np.nan)
@@ -2857,6 +2956,13 @@ if __name__ == "__main__":
     os.environ.setdefault("QT_AUTO_SCREEN_SCALE_FACTOR", "1")
 
     app = QApplication(sys.argv)
+    
+    # Set application icon
+    icon_path = os.path.join(os.path.dirname(__file__), "assets", "logo.ico")
+    if os.path.exists(icon_path):
+        from PyQt6.QtGui import QIcon
+        app.setWindowIcon(QIcon(icon_path))
+    
     app.setStyleSheet(SS)
 
     win = VocalPitchMonitor()

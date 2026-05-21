@@ -1,54 +1,28 @@
-```gitignore
-# Dependencies
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-.venv/
-.env
-.env.local
-.env.*
-.venv/
-.envs/
-.python-version
-.pytest_cache/
-.mypy_cache/
-.coverage
-htmlcov/
-
+```
 # Build artifacts
 build/
-dist/
-*.egg
-*.egg-info/
-.tox/
-.coverage*
+*.pyc
+__pycache__/
 
-# Logs
+# Dependencies
+.venv/
+venv/
+node_modules/
+
+# Logs and temp files
 *.log
+*.tmp
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors
+.vscode/
+.idea/
 
 # OS generated files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
-
-# Editor files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-```
-
-Wait, let me reconsider. The only modified files are `README.md` and `requirements.txt`, which are both source/config files. There are no build artifacts, compiled files, or temporary files in the changes provided.
-
-```gitignore
-
 ```

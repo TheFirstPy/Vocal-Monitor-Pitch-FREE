@@ -75,19 +75,49 @@ python main.py
 | Клавиша | Действие |
 |---------|---------|
 | `Space` | Старт/Стоп воспроизведение |
+| `R` | Перезапуск трека |
 | `M` | Включить/выключить микрофон |
-| `L` | Загрузить трек |
-| `S` | Сохранить сессию (PNG) |
-| `P` | Изменить питч (+1/-1 полутона) |
-| `Esc` | Сбросить фокус |
+| `H` | Включить/выключить монитор |
+| `C` | Очистить график |
+| `Ctrl+O` | Загрузить трек |
 
 ### Рабочий процесс
 
-1. **Загрузка трека**: Нажмите `Load Track` или `L`, выберите MP3/WAV файл
+1. **Загрузка трека**: Нажмите `Load Track`, выберите MP3/WAV файл
 2. **Разделение на вокал** (опционально): Выберите модель Demucs для извлечения вокала
 3. **Настройка чувствительности**: Отрегулируйте ползунок Confidence Threshold (0.3–0.5)
-4. **Включите микрофон**: Нажмите `Mic` или `M` для захвата голоса
+4. **Включите микрофон**: Нажмите `Mic` для захвата голоса
 5. **Поем!**: Следуйте за графиком оригинала, наблюдайте за точностью попадания в ноты
+
+### Сборка для Windows
+
+Для создания standalone .exe файла:
+
+**Вариант 1: PyInstaller (рекомендуется)**
+```bash
+pip install pyinstaller
+pyinstaller --onefile --windowed --icon=assets\logo.ico --name="Vocal Pitch Monitor" --add-data "assets;assets" main.py
+```
+
+**Вариант 2: Автоматическая сборка**
+```bash
+# На Windows запустите:
+build_windows.bat
+
+# Или вручную:
+python -m venv vpm_env
+vpm_env\Scripts\activate
+pip install -r requirements.txt pyinstaller
+pyinstaller --onefile --windowed --icon=assets\logo.ico --name="Vocal Pitch Monitor" --add-data "assets;assets" main.py
+```
+
+Готовый exe-файл появится в папке `dist/`.
+
+**Вариант 3: cx_Freeze**
+```bash
+pip install cx_Freeze
+python setup.py build
+```
 
 ---
 
@@ -181,6 +211,20 @@ export VPM_CACHE_DIR=~/.vpm_cache  # по умолчанию ~/.vpm_cache
 | `mdx_extra_q` | Отличное | ~4 GB | Средне |
 | `mdx_extra` | Высокое | ~6 GB | Медленно |
 
+---
+
+## 📸 Скриншоты
+
+![Интерфейс Vocal Pitch Monitor](screenshots/main_interface.png)
+*Основной интерфейс мониторинга питча*
+
+![Разделение вокала](screenshots/vocal_separation.png)
+*Разделение трека на вокал и музыку через Demucs*
+
+![Экспорт сессии](screenshots/session_export.png)
+*Экспорт результатов тренировки в PNG*
+
+> **Примечание**: Скриншоты расположены в папке `screenshots/`. Для добавления своих скриншотов поместите файлы PNG в эту папку.
 
 ---
 
