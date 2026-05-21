@@ -1,0 +1,6 @@
+numpy
+soundfile
+sounddevice
+aubio
+pyqtgraph
+PyQt6
